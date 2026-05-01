@@ -3,6 +3,9 @@
 :root {
   /* === Font === */
   --font-poppins: var(--font-poppins);
+
+  /* === Colors === */
+  --amber-icons: #d69e2e;
 }
 
 body {
