@@ -71,7 +71,7 @@ export const DailyVerse = () => {
   );
 
   return (
-    <div
+    <section
       ref={dailyVerseRef}
       className="opacity-0 flex dailyverse w-full flex-col items-center justify-center bg-[#fffaf3] py-20 px-6 md:p-20 text-center "
     >
@@ -106,9 +106,9 @@ export const DailyVerse = () => {
               ) : (
                 <p
                   data-dailyverse-item
-                  className="w-full max-w-full whitespace-normal wrap-break-word"
+                  className="w-full max-w-full whitespace-normal wrap-break-word text-left"
                 >
-                  {verse}
+                  &quot;{verse}&quot;
                 </p>
               )}
               <span data-dailyverse-item>
@@ -122,6 +122,6 @@ export const DailyVerse = () => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };

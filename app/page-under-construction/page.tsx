@@ -117,10 +117,10 @@ const PageUnderConstruction = () => {
       <div className="text-center z-10 max-w-[95%] md:max-w-4xl">
         <h1
           ref={titleRef}
-          className="text-5xl sm:text-6xl md:text-9xl font-black text-white mb-6 md:mb-10 tracking-tight leading-[1]"
+          className="text-5xl sm:text-6xl md:text-9xl font-black text-white mb-6 md:mb-10 tracking-tight leading-none"
         >
           Página en <br className="md:hidden" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-yellow-500 to-yellow-600">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-yellow-500 to-yellow-600">
             Desarrollo
           </span>
         </h1>
