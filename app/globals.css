@@ -301,6 +301,7 @@ body {
 
 /* ================ EFECTOS DE FILTRO ================ */
 .backdrop-blur-xs {
+  -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
 }
 

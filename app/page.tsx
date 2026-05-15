@@ -1,5 +1,5 @@
-import { Footer } from './components/shared/Footer';
-import { Header } from './components/shared/Header';
+import { Footer } from './components/shared/general/Footer';
+import { Header } from './components/shared/general/Header';
 import { HomePage } from './Home/HomePage';
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Header
         withHeroVH={true}
-        image="/images/ibg_images/bgibg2.jpeg"
+        image="/images/predicacion1.jpg"
         alt="iglesia-ibg"
       />
       <HomePage />
