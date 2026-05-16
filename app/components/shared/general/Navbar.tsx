@@ -5,6 +5,7 @@ import { FaRegHeart } from 'react-icons/fa';
 import { IbgLogoPersonalizedText } from '../icons/IbgLogoPersonalizedText';
 import { NavbarDrodown } from './navbarDropdown/NavbarDrodown';
 import { useNavbar } from '@/app/hooks/shared/useNavbar';
+import { usePathname } from 'next/navigation';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
@@ -17,6 +18,7 @@ interface NavbarProps {
 export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
   const mobilePanelRef = useRef<HTMLElement>(null);
   const mobileOverlayRef = useRef<HTMLDivElement>(null);
   const {
@@ -38,6 +40,10 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
       label: 'Inicio',
       href: '/',
       isPrimary: true,
+    },
+    {
+      label: 'Sobre Nosotros',
+      href: '/iglesia/sobre-nosotros',
     },
     ...dropdownOptions.flatMap((section) => section.options),
     {
@@ -80,11 +86,39 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
   };
 
   useEffect(() => {
-    const isActualPageIndex = window.location.pathname === '/';
-    if (isActualPageIndex && sectionSelected !== 'inicio') {
+    if (pathname === '/' && sectionSelected !== 'inicio') {
       setSectionSelected('inicio');
+      setOptionSelected('');
+      return;
     }
-  }, [setSectionSelected, sectionSelected]);
+
+    if (pathname === '/iglesia/sobre-nosotros') {
+      if (sectionSelected !== 'Iglesia') {
+        setSectionSelected('Iglesia');
+      }
+
+      if (optionSelected !== 'Sobre nosotros') {
+        setOptionSelected('Sobre nosotros');
+      }
+      return;
+    }
+
+    if (pathname === '/iglesia/ubicacion') {
+      if (sectionSelected !== 'Iglesia') {
+        setSectionSelected('Iglesia');
+      }
+
+      if (optionSelected !== 'Ubicación') {
+        setOptionSelected('Ubicación');
+      }
+    }
+  }, [
+    pathname,
+    sectionSelected,
+    optionSelected,
+    setSectionSelected,
+    setOptionSelected,
+  ]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -167,15 +201,18 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
                 <div className="space-y-2">
                   {mobileLinks.map((item) => {
                     const isHome = item.label === 'Inicio';
+                    const isAboutUs = item.label === 'Sobre Nosotros';
                     const isContact = item.label === 'Contacto';
                     const isDonation = item.label === 'Donaciones';
                     const isSelected = isHome
                       ? sectionSelected === 'inicio'
-                      : isContact
-                        ? sectionSelected === 'contacto'
-                        : isDonation
-                          ? sectionSelected === 'donaciones'
-                          : optionSelected === item.label;
+                      : isAboutUs
+                        ? pathname === '/iglesia/sobre-nosotros'
+                        : isContact
+                          ? sectionSelected === 'contacto'
+                          : isDonation
+                            ? sectionSelected === 'donaciones'
+                            : optionSelected === item.label;
 
                     return (
                       <Link
@@ -184,6 +221,8 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
                         onClick={() => {
                           if (isHome) {
                             setSectionSelected('inicio');
+                          } else if (isAboutUs) {
+                            setSectionSelected('sobre-nosotros');
                           } else if (isContact) {
                             setSectionSelected('contacto');
                           } else if (isDonation) {

@@ -4,13 +4,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useNavbarDropdown } from '@/app/hooks/shared/useNavbarDropdown';
 import { FaChevronDown } from 'react-icons/fa';
-import { IoLocationOutline } from 'react-icons/io5';
-import { PiChurchBold } from 'react-icons/pi';
-import { FaPeopleRoof } from 'react-icons/fa6';
-import { MdEvent } from 'react-icons/md';
-import { MdEmojiPeople } from 'react-icons/md';
-import { FaTv } from 'react-icons/fa';
-import { TbLogs } from 'react-icons/tb';
+import { navbarIconsMap } from '@/app/constants/pageIcons';
 
 // import { useClickOutside } from '@/app/hooks/shared/useClickOutside';
 
@@ -44,18 +38,9 @@ export const NavbarDrodown = ({
     optionDotRef,
   } = useNavbarDropdown();
 
-  const iconsMap: Record<string, React.ReactNode> = {
-    'Sobre nosotros': <PiChurchBold className="text-gray-700 text-[14px]" />,
-    Ubicación: <IoLocationOutline className="text-gray-700 text-[14px]" />,
-    Eventos: <MdEvent className="text-gray-700 text-[14px]" />,
-    Ministerios: <FaPeopleRoof className="text-gray-700 text-[14px]" />,
-    Evangelismo: <MdEmojiPeople className="text-gray-700 text-[14px]" />,
-    Transmisiones: <FaTv className="text-gray-700 text-[14px]" />,
-    Blog: <TbLogs className="text-gray-700 text-[14px]" />,
-  };
-
   const getIcon = (icon: string) => {
-    const iconSelected: React.ReactNode = iconsMap[icon];
+    const iconSelected: React.ReactNode =
+      navbarIconsMap[icon as keyof typeof navbarIconsMap];
     return iconSelected;
   };
 
@@ -134,8 +119,11 @@ export const NavbarDrodown = ({
           {options.map((option) => (
             <Link
               key={option.label}
-              // href={option.href}
-              href="/page-under-construction"
+              href={
+                option.href === '/iglesia/sobre-nosotros'
+                  ? option.href
+                  : 'page-under-construction'
+              }
               className={`relative px-5 sm:px-8 py-3 text-gray-700 hover:bg-gray-100 flex items-center justify-start gap-4 ${option.label === optionSelected ? 'bg-gray-100' : ''}`}
               onClick={() => {
                 inOptionClick(option.label);
