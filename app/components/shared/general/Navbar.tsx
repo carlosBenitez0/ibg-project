@@ -87,19 +87,6 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
   }, [setSectionSelected, sectionSelected]);
 
   useEffect(() => {
-    if (!isMobileMenuOpen) {
-      document.body.style.overflow = '';
-      return;
-    }
-
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMobileMenuOpen]);
-
-  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };

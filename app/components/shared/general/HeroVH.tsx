@@ -82,7 +82,7 @@ export const HeroVH = ({ image, alt }: HeroVHProps) => {
         alt={alt}
         fill
         priority
-        className="object-cover z-0 fixed"
+        className="object-cover z-0 absolute"
       />
 
       <div className="absolute inset-0 bg-slate-800/85 z-10" />

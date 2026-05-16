@@ -10,7 +10,7 @@ interface HeaderProps {
 
 export const Header = ({ withHeroVH = false, image, alt }: HeaderProps) => {
   return (
-    <div className="relative h-dvh w-full overflow-hidden flex justify-center">
+    <div className="relative h-svh w-full overflow-hidden flex justify-center">
       <Navbar inHeroSection={withHeroVH} />
       {withHeroVH && image && alt ? (
         <HeroVH image={image} alt={alt} />
