@@ -203,7 +203,7 @@ export const HomePage = () => {
       <DailyVerse />
       <section className="flex flex-col items-center justify-center py-10 md:py-20 px-4 sm:px-6 md:px-12 lg:px-6 w-full overflow-hidden">
         <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-stretch justify-center w-full gap-4 sm:gap-5 md:gap-6 lg:gap-8"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 items-stretch justify-center w-full gap-4 sm:gap-5 md:gap-6 lg:gap-8 mt-20 md:mt-0"
           ref={cardsContainer}
         >
           {infoCards.map((card, index) => (

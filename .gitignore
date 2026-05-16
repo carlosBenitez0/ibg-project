@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/docs
+/.agents
+/.agents/**
+# animate-text skill lock and related generated files
+skills-lock.json
+.agents/skills/**

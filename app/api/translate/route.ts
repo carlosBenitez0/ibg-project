@@ -61,6 +61,9 @@ const bookTranslations: Record<string, string> = {
   'I John': '1 Juan',
   'II John': '2 Juan',
   'III John': '3 Juan',
+  '1 John': '1 Juan',
+  '2 John': '2 Juan',
+  '3 John': '3 Juan',
   Jude: 'Judas',
   Revelation: 'Apocalipsis',
 };
