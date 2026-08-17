@@ -122,7 +122,9 @@ export const NavbarDrodown = ({
               href={
                 option.href === '/iglesia/sobre-nosotros'
                   ? option.href
-                  : 'page-under-construction'
+                  : option.href === '/iglesia/ubicacion'
+                    ? option.href
+                    : 'page-under-construction'
               }
               className={`relative px-5 sm:px-8 py-3 text-gray-700 hover:bg-gray-100 flex items-center justify-start gap-4 ${option.label === optionSelected ? 'bg-gray-100' : ''}`}
               onClick={() => {
