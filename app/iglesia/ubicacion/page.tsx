@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PageHeader } from '../../components/shared/general/PageHeader';
 import { Footer } from '../../components/shared/general/Footer';
 import { pageHeaderIconsMap } from '@/app/constants/pageIcons';
+import { LocationInfo } from './_components/LocationInfo';
 
 export const metadata: Metadata = {
   title: 'Ubicación | Iglesia Bautista Getsemaní',
@@ -13,9 +14,10 @@ export default function AboutUsPage() {
     <main>
       <PageHeader
         title="Ubicación"
-        subtitle="Encuentra nuestra iglesia y cómo llegar a nosotros."
+        subtitle="Te esperamos en Reubicación 1, Chalatenango. Encuentra toda la información para visitarnos."
         icon={pageHeaderIconsMap['Ubicación'] as React.ReactNode}
       />
+      <LocationInfo />
       <Footer />
     </main>
   );
