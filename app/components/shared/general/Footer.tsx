@@ -11,6 +11,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
+import { churchInfo, telHref } from '@/app/constants/church';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -110,14 +111,20 @@ export const Footer = () => {
                 Chalatenango, El Salvador
               </span>
             </div>
-            <div className="flex gap-4 text-lg md:text-xl items-center">
+            <a
+              href={telHref(churchInfo.phones.office)}
+              className="flex gap-4 text-lg md:text-xl items-center hover:text-white"
+            >
               <FiPhone className="text-3xl text-[#ffc738]" />
-              +503 0000-0000
-            </div>
-            <div className="flex gap-4 text-lg md:text-xl items-center">
+              {churchInfo.phones.office}
+            </a>
+            <a
+              href={`mailto:${churchInfo.emails.general}`}
+              className="flex gap-4 text-lg md:text-xl items-center hover:text-white"
+            >
               <LuMail className="text-3xl text-[#ffc738]" />
-              info@getsemani.org.sv
-            </div>
+              {churchInfo.emails.general}
+            </a>
           </div>
           <div className="footerColumn flex flex-col gap-6 text-gray-300">
             <h3 className="text-md font-bold [font-family:var(--font-playfair-display)] text-white mb-4">
@@ -144,7 +151,7 @@ export const Footer = () => {
             </div>
 
             <Link
-              href={'/page-under-construction'}
+              href="/actividades/eventos"
               className="w-full text-center px-6 py-3 bg-linear-to-r from-[#e9c400] to-[#cf8433] rounded-2xl my-4"
             >
               <span className="text-white text-[14px]">
@@ -157,12 +164,24 @@ export const Footer = () => {
                 Siguenos
               </h4>
               <div className="flex gap-4">
-                <div className="p-4 rounded-full bg-linear-to-r from-[#e9c400] to-[#cf8433]">
+                <a
+                  href={churchInfo.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook de la iglesia"
+                  className="p-4 rounded-full bg-linear-to-r from-[#e9c400] to-[#cf8433] transition-transform hover:-translate-y-1"
+                >
                   <FaFacebookF className="text-3xl text-white" />
-                </div>
-                <div className="p-4 rounded-full bg-linear-to-r from-[#e9c400] to-[#cf8433]">
+                </a>
+                <a
+                  href={churchInfo.social.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok de la iglesia"
+                  className="p-4 rounded-full bg-linear-to-r from-[#e9c400] to-[#cf8433] transition-transform hover:-translate-y-1"
+                >
                   <FaTiktok className="text-3xl text-white" />
-                </div>
+                </a>
               </div>
             </div>
           </div>

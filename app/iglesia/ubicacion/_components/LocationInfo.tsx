@@ -5,6 +5,7 @@ import { FiPhone } from 'react-icons/fi';
 import { LuMail, LuNavigation } from 'react-icons/lu';
 import { ContactInfoItem } from '@/app/components/shared/ui/ContactInfoItem';
 import { Button } from '@/app/components/shared/ui/Button';
+import { MapEmbed } from '@/app/components/shared/ui/MapEmbed';
 import { churchInfo, telHref } from '@/app/constants/church';
 import { formatServiceTime, servicesByWeekOrder } from '@/app/data/services';
 import { useRevealOnScroll } from '@/app/hooks/shared/useRevealOnScroll';
@@ -118,24 +119,8 @@ export const LocationInfo = () => {
         </div>
 
         {/* Mapa */}
-        <div
-          data-reveal
-          className="relative rounded-3xl bg-white p-4 shadow-[0_12px_32px_rgba(15,23,42,0.10)] md:p-6 lg:sticky lg:top-28"
-        >
-          <iframe
-            src={map.embedUrl}
-            title="Mapa de la Iglesia Bautista Getsemaní"
-            className="h-[42rem] w-full rounded-2xl border-0 md:h-[52rem]"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-          <div className="absolute bottom-8 left-8 right-8 rounded-2xl bg-white/95 p-5 shadow-lg backdrop-blur-sm md:bottom-10 md:left-10 md:right-auto">
-            <p className="font-playfair text-2xl font-bold text-navy-900">
-              {churchInfo.name}
-            </p>
-            <p className="text-xl text-navy-700">{address.line1}</p>
-          </div>
+        <div data-reveal className="lg:sticky lg:top-28">
+          <MapEmbed />
         </div>
       </div>
     </section>
