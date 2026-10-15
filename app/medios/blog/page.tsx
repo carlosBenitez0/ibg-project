@@ -4,6 +4,7 @@ import { PageHeader } from '@/app/components/shared/general/PageHeader';
 import { Footer } from '@/app/components/shared/general/Footer';
 import { pageHeaderIconsMap } from '@/app/constants/pageIcons';
 import { FeaturedPost } from './_components/FeaturedPost';
+import { NewsletterForm } from './_components/NewsletterForm';
 import { BlogList, BlogListFallback } from './_components/BlogList';
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default function BlogPage() {
       <Suspense fallback={<BlogListFallback />}>
         <BlogList />
       </Suspense>
+      <NewsletterForm />
       <Footer />
     </main>
   );
