@@ -3,6 +3,7 @@ import { PageHeader } from '@/app/components/shared/general/PageHeader';
 import { Footer } from '@/app/components/shared/general/Footer';
 import { pageHeaderIconsMap } from '@/app/constants/pageIcons';
 import { UpcomingStreams } from './_components/UpcomingStreams';
+import { PastStreams } from './_components/PastStreams';
 
 export const metadata: Metadata = {
   title: 'Transmisiones | Iglesia Bautista Getsemaní',
@@ -19,6 +20,7 @@ export default function LiveStreamsPage() {
         icon={pageHeaderIconsMap['Transmisiones']}
       />
       <UpcomingStreams />
+      <PastStreams />
       <Footer />
     </main>
   );
