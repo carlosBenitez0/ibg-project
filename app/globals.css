@@ -1,5 +1,47 @@
 @import 'tailwindcss';
 
+/* ================ THEME TOKENS ================ */
+/* Paleta de la marca (navy / gold / bronze) y familias tipográficas.
+   `inline` hace que las utilidades resuelvan las variables de next/font
+   en el elemento, no en :root. */
+@theme inline {
+  --font-playfair: var(--font-playfair-display), serif;
+  --font-lato: var(--font-lato-sans), sans-serif;
+
+  --color-navy-50: #f0f4f8;
+  --color-navy-100: #d9e2ec;
+  --color-navy-200: #bcccdc;
+  --color-navy-300: #9fb3c8;
+  --color-navy-400: #829ab1;
+  --color-navy-500: #627d98;
+  --color-navy-600: #486581;
+  --color-navy-700: #274b78;
+  --color-navy-800: #2a4a6f;
+  --color-navy-900: #1f3551;
+
+  --color-gold-50: #fffef7;
+  --color-gold-100: #fef3c7;
+  --color-gold-200: #fde68a;
+  --color-gold-300: #ffe066;
+  --color-gold-400: #e9bd00;
+  --color-gold-500: #d7a119;
+  --color-gold-600: #d69e2e;
+  --color-gold-700: #b7791f;
+  --color-gold-800: #975a16;
+  --color-gold-900: #78350f;
+
+  --color-bronze-50: #fdf8f3;
+  --color-bronze-100: #f7e6d3;
+  --color-bronze-200: #efccaa;
+  --color-bronze-300: #e7b181;
+  --color-bronze-400: #df9658;
+  --color-bronze-500: #d88a2d;
+  --color-bronze-600: #b8722c;
+  --color-bronze-700: #a36426;
+  --color-bronze-800: #8e5720;
+  --color-bronze-900: #794a1a;
+}
+
 :root {
   /* === Font === */
   --font-poppins: var(--font-poppins);
