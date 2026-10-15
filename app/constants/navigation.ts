@@ -51,7 +51,6 @@ export const contactLink: NavLink = {
 export const donationsLink: NavLink = {
   label: 'Donaciones',
   href: '/donaciones',
-  comingSoon: true,
 };
 
 /** Href real del enlace o la página "en desarrollo" si aún no existe. */
