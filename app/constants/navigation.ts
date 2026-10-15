@@ -36,7 +36,7 @@ export const navSections: NavSection[] = [
     label: 'Medios',
     options: [
       { label: 'Transmisiones', href: '/medios/transmisiones' },
-      { label: 'Blog', href: '/medios/blog', comingSoon: true },
+      { label: 'Blog', href: '/medios/blog' },
     ],
   },
 ];
