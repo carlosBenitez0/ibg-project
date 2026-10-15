@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist,  Lato,  Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "./components/shared/ui/Toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${playfairDisplay.variable} ${lato.variable} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
