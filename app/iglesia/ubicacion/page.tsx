@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: 'Encuentra nuestra iglesia y cómo llegar a nosotros.',
 };
 
-export default function AboutUsPage() {
+export default function LocationPage() {
   return (
     <main>
       <PageHeader
