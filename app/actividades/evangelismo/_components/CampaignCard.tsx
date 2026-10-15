@@ -55,7 +55,7 @@ export const CampaignCard = ({ campaign, reversed }: CampaignCardProps) => {
           ))}
         </ul>
 
-        <div className="mb-8 rounded-2xl border-l-4 border-gold-500 bg-gold-50 p-5">
+        <div className="mb-8 rounded-2xl border border-gold-200 bg-gold-50 p-5">
           <h4 className="mb-1 flex items-center gap-2 text-xl font-semibold text-gold-800">
             <IoHeartOutline className="text-2xl" />
             Impacto
