@@ -78,7 +78,7 @@ export const BankInfo = () => {
 
         <p
           data-reveal
-          className="rounded-2xl border-l-4 border-gold-500 bg-gold-50 p-6 text-2xl leading-relaxed text-navy-800"
+          className="rounded-2xl border border-gold-200 bg-gold-50 p-6 text-2xl leading-relaxed text-navy-800"
         >
           <strong>Importante:</strong> después de realizar tu depósito, envía el
           comprobante por{' '}
