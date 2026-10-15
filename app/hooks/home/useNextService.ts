@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { weeklyServices } from '@/app/data/services';
 
 export interface ServiceInfo {
   day: string;
@@ -13,50 +14,7 @@ export interface ServiceInfo {
 
 export const useNextService = () => {
   const [nextService, setNextService] = useState<ServiceInfo | null>(null);
-  const [allServices] = useState([
-    {
-      dayNumber: 0,
-      day: 'Domingo',
-      time: '16:00',
-      subtitle: 'Domingo 4:00PM',
-      description: 'Culto Principal',
-    },
-    {
-      dayNumber: 2,
-      day: 'Martes',
-      time: '16:00',
-      subtitle: 'Martes 4:00PM',
-      description: 'Culto de Oración',
-    },
-    {
-      dayNumber: 3,
-      day: 'Miércoles',
-      time: '17:00',
-      subtitle: 'Miércoles 5:00PM',
-      description: 'Culto de Célula de Hogar',
-    },
-    {
-      dayNumber: 4,
-      day: 'Jueves',
-      time: '16:00',
-      subtitle: 'Jueves 4:00PM',
-      description: 'Culto de Estudio Bíblico',
-    },
-    {
-      dayNumber: 6,
-      day: 'Sábado',
-      time: '16:00',
-      subtitle: 'Sábado 4:00PM',
-      description: 'Culto de General',
-    },
-    {
-      dayNumber: 6,
-      day: 'Sábado',
-      time: '18:00',
-      subtitle: 'Sábado 6:00PM',
-      description: 'Culto de Jóvenes',
-    },
-  ]);
+  const [allServices] = useState(weeklyServices);
 
   useEffect(() => {
     const updateNextService = () => {
