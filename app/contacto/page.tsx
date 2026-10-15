@@ -3,6 +3,7 @@ import { PageHeader } from '@/app/components/shared/general/PageHeader';
 import { Footer } from '@/app/components/shared/general/Footer';
 import { pageHeaderIconsMap } from '@/app/constants/pageIcons';
 import { ContactForm } from './_components/ContactForm';
+import { ContactDetails } from './_components/ContactDetails';
 
 export const metadata: Metadata = {
   title: 'Contacto | Iglesia Bautista Getsemaní',
@@ -19,8 +20,13 @@ export default function ContactPage() {
         icon={pageHeaderIconsMap['Contacto']}
       />
       <section className="w-full bg-[#fffaf3] px-5 py-20 sm:px-8 md:px-12 md:py-28">
-        <div className="mx-auto w-full max-w-440">
-          <ContactForm />
+        <div className="mx-auto grid w-full max-w-440 grid-cols-1 items-start gap-10 lg:grid-cols-5">
+          <div className="lg:col-span-3">
+            <ContactForm />
+          </div>
+          <div className="lg:col-span-2">
+            <ContactDetails />
+          </div>
         </div>
       </section>
       <Footer />
