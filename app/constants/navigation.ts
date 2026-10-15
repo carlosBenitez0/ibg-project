@@ -28,11 +28,7 @@ export const navSections: NavSection[] = [
     label: 'Actividades',
     options: [
       { label: 'Eventos', href: '/actividades/eventos' },
-      {
-        label: 'Ministerios',
-        href: '/actividades/ministerios',
-        comingSoon: true,
-      },
+      { label: 'Ministerios', href: '/actividades/ministerios' },
       {
         label: 'Evangelismo',
         href: '/actividades/evangelismo',

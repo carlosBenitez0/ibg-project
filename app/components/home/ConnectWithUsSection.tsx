@@ -24,7 +24,7 @@ const connectCards = [
     title: 'Conoce Nuestros Ministerios',
     description: 'Encuentra tu lugar para servir en el Reino de Dios',
     buttonLabel: 'Explorar Ministerios',
-    buttonHref: '/page-under-construction',
+    buttonHref: '/actividades/ministerios',
     iconBackgroundClassName: 'bg-linear-to-r from-[#d88a2d] to-[#e9bd00]',
     buttonClassName: 'bg-linear-to-r from-[#d88a2d] to-[#e9bd00]',
   },
