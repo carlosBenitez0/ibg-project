@@ -45,7 +45,6 @@ export const navSections: NavSection[] = [
 export const contactLink: NavLink = {
   label: 'Contacto',
   href: '/contacto',
-  comingSoon: true,
 };
 
 export const donationsLink: NavLink = {

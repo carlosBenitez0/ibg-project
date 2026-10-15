@@ -131,7 +131,7 @@ export const FirstVisitSection = () => {
 
         <div className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:mt-12 sm:w-auto sm:flex-row sm:gap-5">
           {/* <Link
-            href="/page-under-construction"
+            href="/iglesia/ubicacion"
             className="first-visit-button inline-flex w-full items-center justify-center rounded-full bg-white px-8 py-6 text-xl font-semibold text-[#cf8e2d] shadow-md transition-transform duration-300 hover:-translate-y-1 sm:w-auto sm:min-w-88"
           >
             <span className="text-transparent bg-clip-text bg-linear-to-r from-[#cf8e2d] to-[#d7a119]">
@@ -140,7 +140,7 @@ export const FirstVisitSection = () => {
           </Link> */}
 
           <Link
-            href="/page-under-construction"
+            href="/contacto"
             className="first-visit-button inline-flex w-full items-center justify-center rounded-full bg-[#123152] px-8 py-6 text-xl font-semibold text-white shadow-md transition-none sm:w-auto sm:min-w-88"
           >
             <span className="text-white">Contáctanos</span>
