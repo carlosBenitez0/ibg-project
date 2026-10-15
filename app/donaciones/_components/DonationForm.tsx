@@ -10,6 +10,7 @@ import {
   type DonationPurposeId,
 } from '@/app/data/donations';
 import { useRevealOnScroll } from '@/app/hooks/shared/useRevealOnScroll';
+import { PaymentOptions } from './PaymentOptions';
 
 const purposeIcons: Record<DonationPurposeId, React.ReactNode> = {
   offering: <IoHeartOutline />,
@@ -52,7 +53,7 @@ export const DonationForm = () => {
     >
       <div
         data-reveal
-        className="mx-auto w-full max-w-5xl rounded-3xl bg-white p-8 shadow-[0_18px_50px_rgba(15,23,42,0.12)] md:p-14"
+        className="mx-auto w-full max-w-[100rem] rounded-3xl bg-white p-8 shadow-[0_18px_50px_rgba(15,23,42,0.12)] md:p-14"
       >
         <div className="mb-12 text-center">
           <h2 className="mb-4 font-playfair text-4xl font-bold text-navy-900 md:text-5xl">
@@ -193,6 +194,8 @@ export const DonationForm = () => {
             'Selecciona o ingresa un monto válido'
           )}
         </div>
+
+        <PaymentOptions amount={amount} purposeTitle={purpose.title} />
       </div>
     </section>
   );
