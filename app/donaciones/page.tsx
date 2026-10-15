@@ -4,6 +4,7 @@ import { Footer } from '@/app/components/shared/general/Footer';
 import { pageHeaderIconsMap } from '@/app/constants/pageIcons';
 import { DonationForm } from './_components/DonationForm';
 import { BankInfo } from './_components/BankInfo';
+import { DonationImpact } from './_components/DonationImpact';
 
 export const metadata: Metadata = {
   title: 'Donaciones | Iglesia Bautista Getsemaní',
@@ -35,6 +36,7 @@ export default function DonationsPage() {
 
       <DonationForm />
       <BankInfo />
+      <DonationImpact />
       <Footer />
     </main>
   );
