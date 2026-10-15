@@ -4,6 +4,8 @@ import { Footer } from '@/app/components/shared/general/Footer';
 import { pageHeaderIconsMap } from '@/app/constants/pageIcons';
 import { MissionStatement } from './_components/MissionStatement';
 import { CampaignsGallery } from './_components/CampaignsGallery';
+import { ImpactStats } from './_components/ImpactStats';
+import { JoinEvangelism } from './_components/JoinEvangelism';
 
 export const metadata: Metadata = {
   title: 'Evangelismo | Iglesia Bautista Getsemaní',
@@ -21,6 +23,8 @@ export default function EvangelismPage() {
       />
       <MissionStatement />
       <CampaignsGallery />
+      <ImpactStats />
+      <JoinEvangelism />
       <Footer />
     </main>
   );
