@@ -8,7 +8,6 @@ import { useNavbar } from '@/app/hooks/shared/useNavbar';
 import {
   contactLink,
   donationsLink,
-  resolveNavHref,
 } from '@/app/constants/navigation';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -161,7 +160,7 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
                     return (
                       <Link
                         key={item.label}
-                        href={resolveNavHref(item)}
+                        href={item.href}
                         onClick={closeMobileMenu}
                         className={`flex items-center rounded-2xl px-4 py-4 text-[15px] font-medium transition ${isSelected ? 'bg-linear-to-r from-yellow-400 to-yellow-600 text-white shadow-lg shadow-yellow-500/20' : 'text-slate-700 hover:bg-slate-100'}`}
                       >
@@ -231,7 +230,7 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
               className="cursor-pointer"
             >
               <Link
-                href={resolveNavHref(contactLink)}
+                href={contactLink.href}
                 className="relative flex flex-col items-center gap-1 pb-2"
               >
                 <p
@@ -249,7 +248,7 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
 
           <div className="hidden flex-none items-center lg:flex">
             <Link
-              href={resolveNavHref(donationsLink)}
+              href={donationsLink.href}
               className="flex items-center gap-2 rounded-full bg-linear-to-r from-yellow-400 to-yellow-600 px-10 py-2 cursor-pointer
             shadow-md shadow-yellow-400/30 hover:shadow-yellow-400/50
             hover:-translate-y-1 hover:scale-105 transition-all duration-300"

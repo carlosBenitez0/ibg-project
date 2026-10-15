@@ -4,7 +4,7 @@ import { Footer } from '@/app/components/shared/general/Footer';
 import { CtaSection } from '@/app/components/shared/ui/CtaSection';
 import { Button } from '@/app/components/shared/ui/Button';
 import { pageHeaderIconsMap } from '@/app/constants/pageIcons';
-import { contactLink, resolveNavHref } from '@/app/constants/navigation';
+import { contactLink } from '@/app/constants/navigation';
 import { MinistriesGrid } from './_components/MinistriesGrid';
 import { JoinSteps } from './_components/JoinSteps';
 
@@ -31,7 +31,7 @@ export default function MinistriesPage() {
         <Button href="/iglesia/sobre-nosotros" size="lg">
           Conocer más
         </Button>
-        <Button href={resolveNavHref(contactLink)} variant="white" size="lg">
+        <Button href={contactLink.href} variant="white" size="lg">
           Contáctanos
         </Button>
       </CtaSection>

@@ -1,13 +1,8 @@
-// Configuración única de la navegación (navbar desktop, menú móvil, footer).
-// `comingSoon` envía el enlace a la página "en desarrollo" mientras la ruta
-// real no exista; al publicar una página basta con quitar el flag.
-
-export const COMING_SOON_HREF = '/page-under-construction';
+// Configuración única de la navegación (navbar desktop y menú móvil).
 
 export interface NavLink {
   label: string;
   href: string;
-  comingSoon?: boolean;
 }
 
 export interface NavSection {
@@ -52,10 +47,6 @@ export const donationsLink: NavLink = {
   href: '/donaciones',
 };
 
-/** Href real del enlace o la página "en desarrollo" si aún no existe. */
-export const resolveNavHref = (link: NavLink) =>
-  link.comingSoon ? COMING_SOON_HREF : link.href;
-
 const matchesPath = (pathname: string, href: string) =>
   pathname === href || pathname.startsWith(`${href}/`);
 
@@ -67,14 +58,14 @@ export const getActiveNav = (pathname: string) => {
   if (pathname === '/') return { section: 'inicio', option: '' };
 
   for (const section of navSections) {
-    const option = section.options.find(
-      (item) => !item.comingSoon && matchesPath(pathname, item.href)
+    const option = section.options.find((item) =>
+      matchesPath(pathname, item.href)
     );
     if (option) return { section: section.label, option: option.label };
   }
 
   for (const link of [contactLink, donationsLink]) {
-    if (!link.comingSoon && matchesPath(pathname, link.href)) {
+    if (matchesPath(pathname, link.href)) {
       return { section: link.label.toLowerCase(), option: '' };
     }
   }
