@@ -4,6 +4,7 @@ import { Footer } from '@/app/components/shared/general/Footer';
 import { pageHeaderIconsMap } from '@/app/constants/pageIcons';
 import { ContactForm } from './_components/ContactForm';
 import { ContactDetails } from './_components/ContactDetails';
+import { ContactMap } from './_components/ContactMap';
 
 export const metadata: Metadata = {
   title: 'Contacto | Iglesia Bautista Getsemaní',
@@ -29,6 +30,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <ContactMap />
       <Footer />
     </main>
   );
