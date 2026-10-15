@@ -5,14 +5,13 @@ import { useGSAP } from '@gsap/react';
 import { useNavbarDropdown } from '@/app/hooks/shared/useNavbarDropdown';
 import { FaChevronDown } from 'react-icons/fa';
 import { navbarIconsMap } from '@/app/constants/pageIcons';
+import type { NavLink } from '@/app/constants/navigation';
 
 // import { useClickOutside } from '@/app/hooks/shared/useClickOutside';
 
 interface NavbarDropdownProps {
   label: string;
-  options: { label: string; href: string }[];
-  onClick: (label: string) => void;
-  inOptionClick: (label: string) => void;
+  options: NavLink[];
   sectionSelected: string;
   optionSelected: string;
 }
@@ -20,8 +19,6 @@ interface NavbarDropdownProps {
 export const NavbarDrodown = ({
   label,
   options,
-  onClick,
-  inOptionClick,
   sectionSelected,
   optionSelected,
 }: NavbarDropdownProps) => {
@@ -91,7 +88,6 @@ export const NavbarDrodown = ({
       className="text-[14px] relative cursor-pointer "
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={() => onClick(label)}
     >
       <div className="flex items-center gap-2 pb-2">
         <p
@@ -119,16 +115,9 @@ export const NavbarDrodown = ({
           {options.map((option) => (
             <Link
               key={option.label}
-              href={
-                option.href === '/iglesia/sobre-nosotros'
-                  ? option.href
-                  : 'page-under-construction'
-              }
+              href={option.href}
               className={`relative px-5 sm:px-8 py-3 text-gray-700 hover:bg-gray-100 flex items-center justify-start gap-4 ${option.label === optionSelected ? 'bg-gray-100' : ''}`}
-              onClick={() => {
-                inOptionClick(option.label);
-                setIsOpen(false);
-              }}
+              onClick={() => setIsOpen(false)}
             >
               <span className="flex w-5 shrink-0 items-center justify-center text-[16px] text-gray-700">
                 {getIcon(option.label)}

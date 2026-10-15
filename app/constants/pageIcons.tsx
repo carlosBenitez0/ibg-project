@@ -5,6 +5,8 @@ import { FaPeopleRoof } from 'react-icons/fa6';
 import { MdEmojiPeople } from 'react-icons/md';
 import { FaTv } from 'react-icons/fa';
 import { TbLogs } from 'react-icons/tb';
+import { FaRegHeart } from 'react-icons/fa';
+import { LuMail } from 'react-icons/lu';
 
 // Iconos para dropdown del navbar (14px)
 export const navbarIconsMap: Record<string, React.ReactNode> = {
@@ -34,4 +36,8 @@ export const pageHeaderIconsMap: Record<string, React.ReactNode> = {
   ),
   Transmisiones: <FaTv className="w-14 h-14 md:w-16 md:h-16 text-[#d7a119]" />,
   Blog: <TbLogs className="w-14 h-14 md:w-16 md:h-16 text-[#d7a119]" />,
+  Donaciones: (
+    <FaRegHeart className="w-14 h-14 md:w-16 md:h-16 text-[#d7a119]" />
+  ),
+  Contacto: <LuMail className="w-14 h-14 md:w-16 md:h-16 text-[#d7a119]" />,
 };

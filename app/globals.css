@@ -1,23 +1,56 @@
 @import 'tailwindcss';
 
-:root {
-  /* === Font === */
-  --font-poppins: var(--font-poppins);
+/* ================ THEME TOKENS ================ */
+/* Paleta de la marca (navy / gold / bronze) y familias tipográficas.
+   `inline` hace que las utilidades resuelvan las variables de next/font
+   en el elemento, no en :root. */
+@theme inline {
+  --font-playfair: var(--font-playfair-display), serif;
+  --font-lato: var(--font-lato-sans), sans-serif;
 
+  --color-navy-50: #f0f4f8;
+  --color-navy-100: #d9e2ec;
+  --color-navy-200: #bcccdc;
+  --color-navy-300: #9fb3c8;
+  --color-navy-400: #829ab1;
+  --color-navy-500: #627d98;
+  --color-navy-600: #486581;
+  --color-navy-700: #274b78;
+  --color-navy-800: #2a4a6f;
+  --color-navy-900: #1f3551;
+
+  --color-gold-50: #fffef7;
+  --color-gold-100: #fef3c7;
+  --color-gold-200: #fde68a;
+  --color-gold-300: #ffe066;
+  --color-gold-400: #e9bd00;
+  --color-gold-500: #d7a119;
+  --color-gold-600: #d69e2e;
+  --color-gold-700: #b7791f;
+  --color-gold-800: #975a16;
+  --color-gold-900: #78350f;
+
+  --color-bronze-50: #fdf8f3;
+  --color-bronze-100: #f7e6d3;
+  --color-bronze-200: #efccaa;
+  --color-bronze-300: #e7b181;
+  --color-bronze-400: #df9658;
+  --color-bronze-500: #d88a2d;
+  --color-bronze-600: #b8722c;
+  --color-bronze-700: #a36426;
+  --color-bronze-800: #8e5720;
+  --color-bronze-900: #794a1a;
+}
+
+:root {
   /* === Colors === */
   --amber-icons: #d69e2e;
 }
 
-body {
-  font-family: var(--font-poppins);
-  font-size: 1.6rem;
-}
-
 /* ================ RESET STYLES ================ */
-a {
-  color: inherit;
-  text-decoration: none;
-}
+/* Los enlaces ya heredan color y decoración desde el preflight de Tailwind
+   (@layer base). No redefinir `a` aquí: una regla fuera de capa pisa las
+   utilidades de color (text-*) en los enlaces. */
 
 ul[role='list'],
 ol[role='list'] {
@@ -72,6 +105,8 @@ html {
   font-size: 62.5%;
 }
 
+/* Nota: Poppins no se carga con next/font, así que hoy se usa la sans-serif
+   del sistema. Para usarla de verdad, cargarla en layout.tsx. */
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;
@@ -85,232 +120,6 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   scroll-behavior: smooth;
-}
-
-/* ================ ANIMACIONES ================ */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(-20px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes glow {
-  0% {
-    box-shadow:
-      0 0 5px var(--magenta),
-      0 0 10px var(--magenta),
-      0 0 15px var(--magenta);
-  }
-
-  100% {
-    box-shadow:
-      0 0 10px var(--magenta),
-      0 0 20px var(--magenta),
-      0 0 30px var(--magenta);
-  }
-}
-
-@keyframes shimmer {
-  from {
-    transform: translateX(-50%);
-  }
-
-  to {
-    transform: translateX(50%);
-  }
-}
-
-@keyframes gradientShift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@keyframes borderGlow {
-  0% {
-    border-color: var(--magenta);
-    box-shadow:
-      0 0 5px var(--magenta),
-      inset 0 0 5px var(--magenta);
-  }
-
-  100% {
-    border-color: var(--light-blue);
-    box-shadow:
-      0 0 20px var(--light-blue),
-      inset 0 0 10px var(--light-blue);
-  }
-}
-
-@keyframes bubbleFloat {
-  0%,
-  100% {
-    transform: translateY(0px) translateX(0px) scale(1);
-    opacity: 0.7;
-  }
-
-  33% {
-    transform: translateY(-20px) translateX(10px) scale(1.1);
-    opacity: 0.9;
-  }
-
-  66% {
-    transform: translateY(-10px) translateX(-10px) scale(0.9);
-    opacity: 0.8;
-  }
-}
-
-@keyframes sparkle {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ===== Clases de utilidad ===== */
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.6s ease-out;
-}
-
-.animate-slide-in {
-  animation: slideIn 0.4s ease-out;
-}
-
-.animate-pulse-slow {
-  animation: pulse 3s infinite;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-.animate-shimmer {
-  animation: shimmer 2s linear infinite;
-}
-
-.animate-bounce-slow {
-  animation: bounce 3s infinite;
-}
-
-.animate-spin-slow {
-  animation: spin 8s linear infinite;
-}
-
-.animate-gradient-shift {
-  animation: gradientShift 4s ease-in-out infinite;
-}
-
-.animate-border-glow {
-  animation: borderGlow 2s ease-in-out infinite alternate;
-}
-
-.animate-bubble-float {
-  animation: bubbleFloat 6s ease-in-out infinite;
-}
-
-.animate-sparkle {
-  animation: sparkle 1.5s ease-in-out infinite;
-}
-
-/* ================ GRADIENTES ================ */
-/* .bg-tech-gradient {
-    background: var(--tech-gradient);
-  } */
-
-/* .bg-dark-gradient {
-    background: var(--dark-gradient);
-  } */
-
-/* .bg-shimmer-gradient {
-    background: var(--shimmer-gradient);
-  } */
-
-/* .bg-mesh-gradient {
-    background: var(--mesh-gradient);
-  } */
-
-/* ================ EFECTOS DE FILTRO ================ */
-.backdrop-blur-xs {
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-}
-
-/* ================ REACT SWIPER ================ */
-
-.swiper-pagination-bullet-active {
-  /*color de las bullets*/
-  background: var(--magenta) !important;
-  scale: 1.5;
 }
 
 /* ================ CLASES DE UTILIDAD ================ */

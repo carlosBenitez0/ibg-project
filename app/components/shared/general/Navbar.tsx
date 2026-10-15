@@ -5,7 +5,10 @@ import { FaRegHeart } from 'react-icons/fa';
 import { IbgLogoPersonalizedText } from '../icons/IbgLogoPersonalizedText';
 import { NavbarDrodown } from './navbarDropdown/NavbarDrodown';
 import { useNavbar } from '@/app/hooks/shared/useNavbar';
-import { usePathname } from 'next/navigation';
+import {
+  contactLink,
+  donationsLink,
+} from '@/app/constants/navigation';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
@@ -18,14 +21,11 @@ interface NavbarProps {
 export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
   const mobilePanelRef = useRef<HTMLElement>(null);
   const mobileOverlayRef = useRef<HTMLDivElement>(null);
   const {
     sectionSelected,
-    setSectionSelected,
     optionSelected,
-    setOptionSelected,
     dropdownOptions,
     isHovered,
     setIsHovered,
@@ -36,24 +36,10 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
   } = useNavbar();
 
   const mobileLinks = [
-    {
-      label: 'Inicio',
-      href: '/',
-      isPrimary: true,
-    },
-    {
-      label: 'Sobre Nosotros',
-      href: '/iglesia/sobre-nosotros',
-    },
+    { label: 'Inicio', href: '/' },
     ...dropdownOptions.flatMap((section) => section.options),
-    {
-      label: 'Donaciones',
-      href: '/page-under-construction',
-    },
-    {
-      label: 'Contacto',
-      href: '/page-under-construction',
-    },
+    donationsLink,
+    contactLink,
   ];
 
   const closeMobileMenu = () => {
@@ -84,41 +70,6 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
       ease: 'power2.out',
     });
   };
-
-  useEffect(() => {
-    if (pathname === '/' && sectionSelected !== 'inicio') {
-      setSectionSelected('inicio');
-      setOptionSelected('');
-      return;
-    }
-
-    if (pathname === '/iglesia/sobre-nosotros') {
-      if (sectionSelected !== 'Iglesia') {
-        setSectionSelected('Iglesia');
-      }
-
-      if (optionSelected !== 'Sobre nosotros') {
-        setOptionSelected('Sobre nosotros');
-      }
-      return;
-    }
-
-    if (pathname === '/iglesia/ubicacion') {
-      if (sectionSelected !== 'Iglesia') {
-        setSectionSelected('Iglesia');
-      }
-
-      if (optionSelected !== 'Ubicación') {
-        setOptionSelected('Ubicación');
-      }
-    }
-  }, [
-    pathname,
-    sectionSelected,
-    optionSelected,
-    setSectionSelected,
-    setOptionSelected,
-  ]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -200,39 +151,17 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
               <div className="flex-1 overflow-y-auto px-5 py-6 sm:px-6">
                 <div className="space-y-2">
                   {mobileLinks.map((item) => {
-                    const isHome = item.label === 'Inicio';
-                    const isAboutUs = item.label === 'Sobre Nosotros';
-                    const isContact = item.label === 'Contacto';
-                    const isDonation = item.label === 'Donaciones';
-                    const isSelected = isHome
-                      ? sectionSelected === 'inicio'
-                      : isAboutUs
-                        ? pathname === '/iglesia/sobre-nosotros'
-                        : isContact
-                          ? sectionSelected === 'contacto'
-                          : isDonation
-                            ? sectionSelected === 'donaciones'
-                            : optionSelected === item.label;
+                    const isSelected =
+                      item.href === '/'
+                        ? sectionSelected === 'inicio'
+                        : optionSelected === item.label ||
+                          sectionSelected === item.label.toLowerCase();
 
                     return (
                       <Link
                         key={item.label}
                         href={item.href}
-                        onClick={() => {
-                          if (isHome) {
-                            setSectionSelected('inicio');
-                          } else if (isAboutUs) {
-                            setSectionSelected('sobre-nosotros');
-                          } else if (isContact) {
-                            setSectionSelected('contacto');
-                          } else if (isDonation) {
-                            setSectionSelected('donaciones');
-                          } else {
-                            setOptionSelected(item.label);
-                          }
-
-                          closeMobileMenu();
-                        }}
+                        onClick={closeMobileMenu}
                         className={`flex items-center rounded-2xl px-4 py-4 text-[15px] font-medium transition ${isSelected ? 'bg-linear-to-r from-yellow-400 to-yellow-600 text-white shadow-lg shadow-yellow-500/20' : 'text-slate-700 hover:bg-slate-100'}`}
                       >
                         {item.label}
@@ -273,7 +202,6 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
             >
               <Link
                 href="/"
-                onClick={() => setSectionSelected('inicio')}
                 className="relative flex flex-col items-center gap-1 pb-2"
               >
                 <p
@@ -292,8 +220,6 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
                 key={option.label}
                 label={option.label}
                 options={option.options}
-                onClick={() => setSectionSelected(option.label)}
-                inOptionClick={setOptionSelected}
                 sectionSelected={sectionSelected}
                 optionSelected={optionSelected}
               />
@@ -304,8 +230,7 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
               className="cursor-pointer"
             >
               <Link
-                href="/page-under-construction"
-                onClick={() => setSectionSelected('contacto')}
+                href={contactLink.href}
                 className="relative flex flex-col items-center gap-1 pb-2"
               >
                 <p
@@ -322,14 +247,15 @@ export const Navbar = ({ inHeroSection = false }: NavbarProps) => {
           </ul>
 
           <div className="hidden flex-none items-center lg:flex">
-            <div
+            <Link
+              href={donationsLink.href}
               className="flex items-center gap-2 rounded-full bg-linear-to-r from-yellow-400 to-yellow-600 px-10 py-2 cursor-pointer
             shadow-md shadow-yellow-400/30 hover:shadow-yellow-400/50
             hover:-translate-y-1 hover:scale-105 transition-all duration-300"
             >
               <FaRegHeart />
-              <Link href="/page-under-construction">Donar</Link>
-            </div>
+              Donar
+            </Link>
           </div>
 
           {/* Mobile/Tablet menu */}

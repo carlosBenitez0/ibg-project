@@ -106,7 +106,7 @@ export const HeroVH = ({ image, alt }: HeroVHProps) => {
           ref={divref}
           className="opacity-0 flex w-full max-w-88 items-center justify-center rounded-full bg-linear-to-r from-yellow-400 to-yellow-600 px-6 py-4 shadow-[0_0_10px_rgba(255,255,0,0.4),inset_0_10px_10px_rgba(255,255,255,0.3)] transition-transform hover:translate-y-10 hover:scale-105 hover:shadow-yellow-400/50 sm:max-w-104 sm:px-8 sm:py-5 lg:w-fit lg:max-w-none lg:px-15 lg:py-5 cursor-pointer"
         >
-          <Link href="/page-under-construction">
+          <Link href="/actividades/eventos">
             <span className="flex items-center justify-center gap-3 text-center text-lg font-semibold text-white sm:text-lg lg:text-[18px]">
               Únete a nuestros servicios <RiServiceLine />
             </span>

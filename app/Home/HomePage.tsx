@@ -10,12 +10,11 @@ import { GoPeople } from 'react-icons/go';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
 import { useNextService } from '../hooks/home/useNextService';
 import { DailyVerse } from '../components/home/DailyVerse';
 import { ConnectWithUsSection } from '../components/home/ConnectWithUsSection';
 import { FirstVisitSection } from '../components/home/FirstVisitSection';
-import { Footer } from '../components/shared/general/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,32 +23,36 @@ export const HomePage = () => {
   const welcomeSection = useRef<HTMLDivElement>(null);
   const { nextService } = useNextService();
 
-  const infoCards = [
-    {
-      icon: <IoCalendarClearOutline />,
-      title: 'Próximo Servicio',
-      subtitle: nextService?.subtitle || 'Cargando...',
-      description: nextService?.description || 'Próximo servicio',
-    },
-    {
-      icon: <IoLocationOutline />,
-      title: 'Ubicación',
-      subtitle: 'Reubicación 1',
-      description: 'Chalatenango, El Salvador',
-    },
-    {
-      icon: <GoPeople />,
-      title: 'Comunidad',
-      subtitle: '200+ Miembros',
-      description: 'Una familia en Cristo',
-    },
-    {
-      icon: <IoCall />,
-      title: 'Conectar',
-      subtitle: '+503 0000-0000',
-      description: 'Estamos aquí para ti',
-    },
-  ];
+  // Memoize infoCards to prevent recreation on every render
+  const infoCards = useMemo(
+    () => [
+      {
+        icon: <IoCalendarClearOutline />,
+        title: 'Próximo Servicio',
+        subtitle: nextService?.subtitle || 'Cargando...',
+        description: nextService?.description || 'Próximo servicio',
+      },
+      {
+        icon: <IoLocationOutline />,
+        title: 'Ubicación',
+        subtitle: 'Reubicación 1',
+        description: 'Chalatenango, El Salvador',
+      },
+      {
+        icon: <GoPeople />,
+        title: 'Comunidad',
+        subtitle: '200+ Miembros',
+        description: 'Una familia en Cristo',
+      },
+      {
+        icon: <IoCall />,
+        title: 'Conectar',
+        subtitle: '+503 0000-0000',
+        description: 'Estamos aquí para ti',
+      },
+    ],
+    [nextService]
+  );
 
   useGSAP(
     () => {
@@ -84,8 +87,7 @@ export const HomePage = () => {
     },
     {
       scope: cardsContainer,
-      // dependencies: [loading, error, verse, reference],
-      revertOnUpdate: true,
+      revertOnUpdate: false,
     }
   );
 

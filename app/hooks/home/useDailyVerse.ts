@@ -8,6 +8,7 @@ type DailyVerse = {
 };
 
 const STORAGE_KEY = 'todaysTranslatedVerse';
+const TRANSLATION_WARNING = 'MYMEMORY WARNING';
 
 const getNowDate = () =>
   new Intl.DateTimeFormat('es-ES', {
@@ -58,12 +59,19 @@ export const useDailyVerse = () => {
         if (!response.ok) throw new Error(`Translate API ${response.status}`);
         const data = await response.json();
 
-        // Persist the translated result with the current `now` value
-        try {
-          localStorage.setItem(STORAGE_KEY, JSON.stringify({ now, data }));
-        } catch (e) {
-          // ignore storage errors
-          console.warn('Could not write to localStorage', e);
+        // Persist the translated result with the current `now` value.
+        // Skip it when MyMemory returns its quota warning instead of a
+        // translation, otherwise the error would stay cached all day.
+        const isQuotaWarning =
+          typeof data.verse === 'string' &&
+          data.verse.startsWith(TRANSLATION_WARNING);
+        if (!isQuotaWarning) {
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({ now, data }));
+          } catch (e) {
+            // ignore storage errors
+            console.warn('Could not write to localStorage', e);
+          }
         }
 
         return {
@@ -90,8 +98,6 @@ export const useDailyVerse = () => {
           data.verse.details.text,
           data.verse.details.reference
         );
-
-        console.log('se hizo la peticion');
 
         setDailyVerse({
           verse: translated.verse,
