@@ -15,7 +15,7 @@ const connectCards = [
     title: 'Únete a Nuestros Servicios',
     description: 'Te invitamos a ser parte de nuestra familia de fe',
     buttonLabel: 'Ver Eventos',
-    buttonHref: '/page-under-construction',
+    buttonHref: '/actividades/eventos',
     iconBackgroundClassName: 'bg-linear-to-r from-[#e9bd00] to-[#d88a2d]',
     buttonClassName: 'bg-linear-to-r from-[#e9bd00] to-[#d88a2d]',
   },

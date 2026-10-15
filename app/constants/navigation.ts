@@ -27,7 +27,7 @@ export const navSections: NavSection[] = [
   {
     label: 'Actividades',
     options: [
-      { label: 'Eventos', href: '/actividades/eventos', comingSoon: true },
+      { label: 'Eventos', href: '/actividades/eventos' },
       {
         label: 'Ministerios',
         href: '/actividades/ministerios',
