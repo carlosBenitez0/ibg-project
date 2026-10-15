@@ -31,7 +31,8 @@ export const upcomingStreams: UpcomingStream[] = [
   {
     id: 'culto-principal',
     title: 'Culto Principal en Vivo',
-    description: 'Únete a nuestro servicio principal de adoración y predicación.',
+    description:
+      'Únete a nuestro servicio principal de adoración y predicación.',
     service: findService('Culto Principal'),
     platform: 'youtube',
     durationMinutes: 120,
