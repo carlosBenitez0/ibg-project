@@ -43,16 +43,8 @@
 }
 
 :root {
-  /* === Font === */
-  --font-poppins: var(--font-poppins);
-
   /* === Colors === */
   --amber-icons: #d69e2e;
-}
-
-body {
-  font-family: var(--font-poppins);
-  font-size: 1.6rem;
 }
 
 /* ================ RESET STYLES ================ */
@@ -113,6 +105,8 @@ html {
   font-size: 62.5%;
 }
 
+/* Nota: Poppins no se carga con next/font, así que hoy se usa la sans-serif
+   del sistema. Para usarla de verdad, cargarla en layout.tsx. */
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 1.6rem;

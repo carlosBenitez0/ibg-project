@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { useNavbarDropdown } from '@/app/hooks/shared/useNavbarDropdown';
 import { FaChevronDown } from 'react-icons/fa';
 import { navbarIconsMap } from '@/app/constants/pageIcons';
-import { type NavLink, resolveNavHref } from '@/app/constants/navigation';
+import type { NavLink } from '@/app/constants/navigation';
 
 // import { useClickOutside } from '@/app/hooks/shared/useClickOutside';
 
@@ -115,7 +115,7 @@ export const NavbarDrodown = ({
           {options.map((option) => (
             <Link
               key={option.label}
-              href={resolveNavHref(option)}
+              href={option.href}
               className={`relative px-5 sm:px-8 py-3 text-gray-700 hover:bg-gray-100 flex items-center justify-start gap-4 ${option.label === optionSelected ? 'bg-gray-100' : ''}`}
               onClick={() => setIsOpen(false)}
             >
