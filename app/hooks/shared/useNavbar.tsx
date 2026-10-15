@@ -1,71 +1,26 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { getActiveNav, navSections } from '@/app/constants/navigation';
 
 export const useNavbar = () => {
-  const [sectionSelected, setSectionSelected] = useState<string>('');
-  const [optionSelected, setOptionSelected] = useState<string>('');
+  const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
   const [isContactHovered, setIsContactHovered] = useState(false);
 
   const labelRef = useRef<HTMLDivElement>(null);
   const labelContactRef = useRef<HTMLDivElement>(null);
 
-  const dropdownOptions = [
-    {
-      label: 'Iglesia',
-      href: '/iglesia',
-      options: [
-        {
-          label: 'Sobre nosotros',
-          href: '/iglesia/sobre-nosotros',
-        },
-        {
-          label: 'Ubicación',
-          href: '/iglesia/ubicacion',
-        },
-      ],
-    },
-    {
-      label: 'Actividades',
-      href: '/actividades',
-      options: [
-        {
-          label: 'Eventos',
-          href: '/actividades/eventos',
-        },
-        {
-          label: 'Ministerios',
-          href: '/actividades/ministerios',
-        },
-        {
-          label: 'Evangelismo',
-          href: '/actividades/evangelismo',
-        },
-      ],
-    },
-    {
-      label: 'Medios',
-      href: '/medios',
-      options: [
-        {
-          label: 'Transmisiones',
-          href: '/medios/transmisiones',
-        },
-        {
-          label: 'Blog',
-          href: '/medios/blog',
-        },
-      ],
-    },
-  ];
+  // La sección activa se deriva de la ruta: no hace falta sincronizar estado
+  const { section: sectionSelected, option: optionSelected } =
+    getActiveNav(pathname);
 
   return {
+    pathname,
     sectionSelected,
-    setSectionSelected,
     optionSelected,
-    setOptionSelected,
-    dropdownOptions,
+    dropdownOptions: navSections,
     isHovered,
     setIsHovered,
     isContactHovered,

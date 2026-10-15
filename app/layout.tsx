@@ -13,7 +13,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 const lato = Lato({
-  variable: "--font-lato",
+  variable: "--font-lato-sans",
   subsets: ["latin"],
   weight: "400",
 });
