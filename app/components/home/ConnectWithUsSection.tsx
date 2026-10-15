@@ -34,7 +34,7 @@ const connectCards = [
     description:
       'No te pierdas nuestros servicios desde casa, en vivo cada semana',
     buttonLabel: 'Ver Transmisiones',
-    buttonHref: '/page-under-construction',
+    buttonHref: '/medios/transmisiones',
     iconBackgroundClassName: 'bg-slate-500',
     buttonClassName: 'bg-slate-500',
   },
