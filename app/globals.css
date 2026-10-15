@@ -56,9 +56,13 @@ body {
 }
 
 /* ================ RESET STYLES ================ */
-a {
-  color: inherit;
-  text-decoration: none;
+/* En una capa para que las utilidades de color de Tailwind ganen sobre
+   este reset (las reglas fuera de capa tienen prioridad sobre @layer). */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 ul[role='list'],
